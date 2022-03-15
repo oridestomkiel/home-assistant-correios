@@ -4,11 +4,11 @@
 
 Sinta-se livre para me pagar um café: Chave aleatória Pix `20b16bb2-d827-48a6-9e2c-924cd11a1a79` ou pelo QR CODE abaixo ❤.
 
-![pix][pix]
+![pix](https://raw.githubusercontent.com/oridestomkiel/home-assistant-correios/main/pix.jpg)
 
 ## Rastreamento de objetos nos correios.
 
-![exemplo1][exampleimg1]
+![exemplo1](https://github.com/oridestomkiel/home-assistant-correios/blob/main/exemplo1.jpg)
 
 ## Instalação
 - [x] Necessário ter o HACS instalado: https://github.com/hacs/integration
@@ -51,10 +51,6 @@ https://www.correios.com.br/atendimento/ferramentas/sistemas/arquivos/lista-de-e
 * Tipo Postal: Tipo de serviço referente ao pacote enviado.
 * Movimentações: Lista com todas as movimenrações do pacote, desde a postagem até a entrega.
 
-![exemplo2][exampleimg2]
+![exemplo2](https://github.com/oridestomkiel/home-assistant-correios/blob/main/exemplo2.jpg)
 
 ***
-
-[exampleimg1]: exemplo1.jpg
-[exampleimg2]: exemplo2.jpg
-[pix]: pix.jpg
