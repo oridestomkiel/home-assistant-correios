@@ -4,7 +4,9 @@
   "version": "1.0",
   "documentation": "https://github.com/oridestomkiel/home-assistant-correios",
   "dependencies": [],
-  "codeowners": ["@oridestomkiel"],
+  "codeowners": [
+    "@oridestomkiel"
+  ],
   "requirements": [],
   "iot_class": "cloud_polling"
 }
