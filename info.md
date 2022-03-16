@@ -10,7 +10,9 @@
 
 A adição da integração à sua instância do Home Assistant pode ser feita através da interface do usuário, usando este botão:
 
-<a href="https://my.home-assistant.io/redirect/config_flow_start?domain=correios" target="_blank" rel="Rastreamento Correios">![Foo](https://my.home-assistant.io/badges/config_flow_start.svg)</a>
+#### IMPORTANTE: Clique no botão abaixo com a opção de abrir em uma nova janela
+
+<a href="https://my.home-assistant.io/redirect/config_flow_start?domain=correios" rel="Rastreamento Correios">![Correios](https://my.home-assistant.io/badges/config_flow_start.svg)</a>
 
 ### Configuração Manual:
 
@@ -63,18 +65,3 @@ Sinta-se livre para me pagar um café: Chave aleatória Pix `20b16bb2-d827-48a6-
 ![pix](https://github.com/oridestomkiel/home-assistant-correios/blob/main/pix.jpg)
 
 ***
-
-[hacs1]: resources/hacs-01.png
-[hacs2]: resources/hacs-02.png
-[hacs3]: resources/hacs-03.png
-[hacs4]: resources/hacs-04.png
-[hacs5]: resources/hacs-05.png
-[hacs6]: resources/hacs-06.png
-[hacs7]: resources/hacs-07.png
-[hacs8]: resources/hacs-08.png
-[hacs9]: resources/hacs-09.png
-[hacs10]: resources/hacs-10.png
-
-[exampleimg1]: exemplo1.jpg
-[exampleimg2]: exemplo2.jpg
-[pix]: pix.jpg
