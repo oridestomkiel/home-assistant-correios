@@ -1,11 +1,5 @@
 # Home Assistant Correios
 
-## Curtiu? Pague-me um café!
-
-Sinta-se livre para me pagar um café: Chave aleatória Pix `20b16bb2-d827-48a6-9e2c-924cd11a1a79` ou pelo QR CODE abaixo ❤.
-
-![pix][pix]
-
 ## Rastreamento de objetos nos correios.
 
 ![exemplo1][exampleimg1]
@@ -52,6 +46,14 @@ https://www.correios.com.br/atendimento/ferramentas/sistemas/arquivos/lista-de-e
 * Movimentações: Lista com todas as movimenrações do pacote, desde a postagem até a entrega.
 
 ![exemplo2][exampleimg2]
+
+***
+
+## Curtiu? Pague-me um café!
+
+Sinta-se livre para me pagar um café: Chave aleatória Pix `20b16bb2-d827-48a6-9e2c-924cd11a1a79` ou pelo QR CODE abaixo ❤.
+
+![pix][pix]
 
 ***
 
