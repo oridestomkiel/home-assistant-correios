@@ -1,0 +1,18 @@
+{
+  "title": "Rastreamento Correios",
+  "config": {
+    "step": {
+      "user": {
+        "data": {
+          "description": "Descrição da encomenda",
+          "track": "Código da encomenda"
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "Este objeto já está configurado",
+      "already_in_progress": "A configuração já está em andamento",
+      "missing_configuration": "O componente não está configurado. Por favor, siga a documentação."
+    }
+  }
+}
