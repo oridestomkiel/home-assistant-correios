@@ -39,6 +39,7 @@ async def async_setup_entry(
     device_registry = dr.async_get(hass)
 
     device_registry.async_get_or_create(
+        entry_type=dr.DeviceEntryType.SERVICE,
         config_entry_id=entry.entry_id,
         connections=None,
         identifiers={(DOMAIN, track)},
