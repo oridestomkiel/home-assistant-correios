@@ -95,22 +95,36 @@ class CorreiosSensor(SensorEntity):
                                 {"": "", "Descrição": eventos["descricao"]}
                             )
                             if "unidadeDestino" in eventos:
-                                self.trackings.append(
-                                    {
-                                        "DE": eventos["unidade"]["tipo"]
-                                        + ", "
-                                        + eventos["unidade"]["endereco"]["cidade"]
-                                        + " - "
-                                        + eventos["unidade"]["endereco"]["uf"],
-                                        "Para": eventos["unidadeDestino"]["tipo"]
-                                        + ", "
-                                        + eventos["unidadeDestino"]["endereco"][
-                                            "cidade"
-                                        ]
-                                        + " - "
-                                        + eventos["unidadeDestino"]["endereco"]["uf"],
-                                    }
-                                )
+                                if "cidade" in eventos["unidade"]['endereco']:
+                                    self.trackings.append(
+                                        {
+                                            "DE": eventos["unidade"]["tipo"]
+                                            + ", "
+                                            + eventos["unidade"]["endereco"]["cidade"]
+                                            + " - "
+                                            + eventos["unidade"]["endereco"]["uf"],
+                                            "Para": eventos["unidadeDestino"]["tipo"]
+                                            + ", "
+                                            + eventos["unidadeDestino"]["endereco"][
+                                                "cidade"
+                                            ]
+                                            + " - "
+                                            + eventos["unidadeDestino"]["endereco"]["uf"],
+                                        }
+                                    )
+                                else:
+                                    self.trackings.append(
+                                        {
+                                            "DE": eventos["unidade"]["tipo"]
+                                            + ", "
+                                            + eventos["unidade"]["nome"],
+                                            "Para": eventos["unidadeDestino"]["tipo"]
+                                            + ", "
+                                            + eventos["unidadeDestino"]["endereco"]["uf"]
+                                            + " - "
+                                            + eventos["unidadeDestino"]["nome"]
+                                        }
+                                    )
                             else:
                                 if "cidade" in eventos["unidade"]['endereco']:
                                     self.trackings.append(
