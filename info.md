@@ -1,37 +1,38 @@
 # Home Assistant Correios
 
-## Curtiu? Pague-me um café!
-
-Sinta-se livre para me pagar um café: Chave aleatória Pix `20b16bb2-d827-48a6-9e2c-924cd11a1a79` ou pelo QR CODE abaixo ❤.
-
-![pix](https://raw.githubusercontent.com/oridestomkiel/home-assistant-correios/main/pix.jpg)
+[![Generic badge](https://img.shields.io/badge/contributor-@dougiteixeira-<COLOR>.svg)](https://github.com/dougiteixeira)
 
 ## Rastreamento de objetos nos correios.
 
 ![exemplo1](https://github.com/oridestomkiel/home-assistant-correios/blob/main/exemplo1.jpg)
 
-## Instalação
-- [x] Necessário ter o HACS instalado: https://github.com/hacs/integration
+### Configuração Automática
 
-Para começar coloque todos os arquivos de `/custom_components/correios/` aqui:
-`<config directory>/custom_components/correios/` ou clone o repositório https://github.com/oridestomkiel/home-assistant-correios via HACS
+A adição da integração à sua instância do Home Assistant pode ser feita através da interface do usuário, usando este botão:
 
-## Examplo do arquivo configuration.yaml
+<a href="https://my.home-assistant.io/redirect/config_flow_start?domain=correios" rel="Rastreamento Correios">![Foo](https://my.home-assistant.io/badges/config_flow_start.svg)</a>
 
-```yaml
-sensor:
-  platform: correios
-  track: "OT238304072BR"
-  description: "Camera para garagem"
-```
+### Configuração Manual:
 
-## Variáveis de configuração
+* Na barra lateral clique em Configuração .
+* No menu de configuração selecione Dispositivos e Serviços .
 
-chave | tipo | descrição
-:--- | :--- | :---
-**platform (obrigatório)** | texto | Nome da plataforma.
-**track (obrigatório)** | texto | Código de rastreamento do objeto nos Correios.
-**description (opcional)** | texto | Descrição para identificar o objeto.
+![hacs10](https://raw.githubusercontent.com/oridestomkiel/home-assistant-correios/main/resources/hacs-10.png)
+
+* Vá no canto direito embaixo e clique em “+ Adicionar Integração”.
+* Na lista, pesquise e selecione “Rastreamento Correios” .
+
+![hacs7](https://raw.githubusercontent.com/oridestomkiel/home-assistant-correios/main/resources/hacs-07.png)
+
+* Digite a descrição e o código da ecomenda e clique no botão Enviar.
+
+![hacs8](https://raw.githubusercontent.com/oridestomkiel/home-assistant-correios/main/resources/hacs-08.png)
+
+- [x] Pronto, agora você verá seus rastreios e poderá realizar as suas integrações!
+
+![hacs9](https://raw.githubusercontent.com/oridestomkiel/home-assistant-correios/main/resources/hacs-09.png)
+
+***
 
 ## State and Attributes
 
@@ -54,3 +55,26 @@ https://www.correios.com.br/atendimento/ferramentas/sistemas/arquivos/lista-de-e
 ![exemplo2](https://github.com/oridestomkiel/home-assistant-correios/blob/main/exemplo2.jpg)
 
 ***
+
+## Curtiu? Pague-me um café!
+
+Sinta-se livre para me pagar um café: Chave aleatória Pix `20b16bb2-d827-48a6-9e2c-924cd11a1a79` ou pelo QR CODE abaixo ❤.
+
+![pix](https://github.com/oridestomkiel/home-assistant-correios/blob/main/pix.jpg)
+
+***
+
+[hacs1]: resources/hacs-01.png
+[hacs2]: resources/hacs-02.png
+[hacs3]: resources/hacs-03.png
+[hacs4]: resources/hacs-04.png
+[hacs5]: resources/hacs-05.png
+[hacs6]: resources/hacs-06.png
+[hacs7]: resources/hacs-07.png
+[hacs8]: resources/hacs-08.png
+[hacs9]: resources/hacs-09.png
+[hacs10]: resources/hacs-10.png
+
+[exampleimg1]: exemplo1.jpg
+[exampleimg2]: exemplo2.jpg
+[pix]: pix.jpg
