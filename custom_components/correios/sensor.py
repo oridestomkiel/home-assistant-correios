@@ -8,7 +8,7 @@ import logging
 import async_timeout
 from homeassistant.components.sensor import SensorEntity
 from homeassistant.helpers.aiohttp_client import async_create_clientsession
-from homeassistant.helpers.entity import Entity
+from homeassistant.helpers.entity import DeviceInfo
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.core import HomeAssistant
 from homeassistant.config_entries import ConfigEntry
@@ -36,20 +36,6 @@ async def async_setup_entry(
     session = async_create_clientsession(hass)
     name = f"{description} ({track})"
 
-    device_registry = dr.async_get(hass)
-
-    device_registry.async_get_or_create(
-        entry_type=dr.DeviceEntryType.SERVICE,
-        config_entry_id=entry.entry_id,
-        connections=None,
-        identifiers={(DOMAIN, track)},
-        manufacturer="Correios",
-        name=track,
-        model="Não aplicável",
-        sw_version=None,
-        hw_version=None,
-    )
-
     async_add_entities(
         [CorreiosSensor(track, entry.entry_id, name, description, session)],
         True,
@@ -73,8 +59,20 @@ class CorreiosSensor(SensorEntity):
         self.dtPrevista = None
         self.tipoPostal = None
         self._state = None
-        self._unique_id = track
+        self._attr_unique_id = track
         self.trackings = []
+
+        self._attr_device_info = DeviceInfo(
+            entry_type=dr.DeviceEntryType.SERVICE,
+            config_entry_id=config_entry_id,
+            connections=None,
+            identifiers={(DOMAIN, track)},
+            manufacturer="Correios",
+            name=track,
+            model="Não aplicável",
+            sw_version=None,
+            hw_version=None,
+        )
 
     async def async_update(self):
         try:
