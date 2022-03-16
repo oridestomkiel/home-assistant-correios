@@ -10,22 +10,19 @@
 Para começar coloque todos os arquivos de `/custom_components/correios/` aqui:
 `<config directory>/custom_components/correios/` ou clone o repositório https://github.com/oridestomkiel/home-assistant-correios via HACS
 
-## Examplo do arquivo configuration.yaml
+## Configuração
 
-```yaml
-sensor:
-  platform: correios
-  track: "OT238304072BR"
-  description: "Camera para garagem"
-```
+A adição da integração à sua instância do Home Assistant pode ser feita através da interface do usuário, usando este botão:
+<a href="https://my.home-assistant.io/redirect/config_flow_start?domain=correios" rel="some text">![Foo](https://my.home-assistant.io/badges/config_flow_start.svg)</a>
 
-## Variáveis de configuração
+### Configuração Manual:
 
-chave | tipo | descrição
-:--- | :--- | :---
-**platform (obrigatório)** | texto | Nome da plataforma.
-**track (obrigatório)** | texto | Código de rastreamento do objeto nos Correios.
-**description (opcional)** | texto | Descrição para identificar o objeto.
+* Navegue até sua instância do Home Assistant.
+* Na barra lateral clique em Configuração .
+* No menu de configuração selecione Dispositivos e Serviços .
+* No canto inferior direito, clique no botão botão Adicionar Integração .
+* Na lista, pesquise e selecione “Rastreamento Correios” .
+* Digite a descrição e o código da ecomenda e clique no botão Enviar.
 
 ## State and Attributes
 
