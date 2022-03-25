@@ -239,7 +239,7 @@ class CorreiosSensor(SensorEntity):
             "Data Prevista": self.dtPrevista,
             "Origem": self.origem,
             "Destino": self.destino,
-            "Última Modificação": self.data_movimentacao,
+            "Última Movimentação": self.data_movimentacao,
             "Tipo Postal": self.tipoPostal,
             "Movimentações": self.trackings,
         }
