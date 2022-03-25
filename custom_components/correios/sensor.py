@@ -57,6 +57,9 @@ class CorreiosSensor(SensorEntity):
         self.description = description
         self._image = None
         self.dtPrevista = None
+        self.data_movimentacao = None
+        self.origem = None
+        self.destino = None
         self.tipoPostal = None
         self._state = None
         self._attr_unique_id = track
@@ -90,12 +93,58 @@ class CorreiosSensor(SensorEntity):
                         self._state = obj_correio["objetos"][0]["eventos"][0][
                             "descricao"
                         ]
+                        ultima_movimentacao = obj_correio["objetos"][0]["eventos"][0]
+                        self.data_movimentacao = ultima_movimentacao[
+                            "dtHrCriado"
+                        ].replace("T", " ")
+
+                        if "unidade" in ultima_movimentacao:
+                            if "cidade" in ultima_movimentacao["unidade"]["endereco"]:
+                                self.origem = (
+                                    ultima_movimentacao["unidade"]["tipo"]
+                                    + " - "
+                                    + ultima_movimentacao["unidade"]["endereco"][
+                                        "cidade"
+                                    ]
+                                    + "/"
+                                    + ultima_movimentacao["unidade"]["endereco"]["uf"]
+                                )
+                            else:
+                                self.origem = (
+                                    ultima_movimentacao["unidade"]["tipo"]
+                                    + " - "
+                                    + ultima_movimentacao["unidade"]["nome"]
+                                )
+
+                        if "unidadeDestino" in ultima_movimentacao:
+                            if (
+                                "cidade"
+                                in ultima_movimentacao["unidadeDestino"]["endereco"]
+                            ):
+                                self.destino = (
+                                    ultima_movimentacao["unidadeDestino"]["tipo"]
+                                    + " - "
+                                    + ultima_movimentacao["unidadeDestino"]["endereco"][
+                                        "cidade"
+                                    ]
+                                    + "/"
+                                    + ultima_movimentacao["unidadeDestino"]["endereco"][
+                                        "uf"
+                                    ]
+                                )
+                            else:
+                                self.destino = (
+                                    ultima_movimentacao["unidadeDestino"]["tipo"]
+                                    + " - "
+                                    + ultima_movimentacao["unidadeDestino"]["nome"]
+                                )
+
                         for eventos in obj_correio["objetos"][0]["eventos"]:
                             self.trackings.append(
                                 {"": "", "Descrição": eventos["descricao"]}
                             )
                             if "unidadeDestino" in eventos:
-                                if "cidade" in eventos["unidade"]['endereco']:
+                                if "cidade" in eventos["unidade"]["endereco"]:
                                     self.trackings.append(
                                         {
                                             "DE": eventos["unidade"]["tipo"]
@@ -109,7 +158,9 @@ class CorreiosSensor(SensorEntity):
                                                 "cidade"
                                             ]
                                             + " - "
-                                            + eventos["unidadeDestino"]["endereco"]["uf"],
+                                            + eventos["unidadeDestino"]["endereco"][
+                                                "uf"
+                                            ],
                                         }
                                     )
                                 else:
@@ -120,13 +171,15 @@ class CorreiosSensor(SensorEntity):
                                             + eventos["unidade"]["nome"],
                                             "Para": eventos["unidadeDestino"]["tipo"]
                                             + ", "
-                                            + eventos["unidadeDestino"]["endereco"]["uf"]
+                                            + eventos["unidadeDestino"]["endereco"][
+                                                "uf"
+                                            ]
                                             + " - "
-                                            + eventos["unidadeDestino"]["nome"]
+                                            + eventos["unidadeDestino"]["nome"],
                                         }
                                     )
                             else:
-                                if "cidade" in eventos["unidade"]['endereco']:
+                                if "cidade" in eventos["unidade"]["endereco"]:
                                     self.trackings.append(
                                         {
                                             "Em": eventos["unidade"]["tipo"]
@@ -145,14 +198,12 @@ class CorreiosSensor(SensorEntity):
                                         }
                                     )
                             self.trackings.append(
-                                {"Data/Hora": eventos["dtHrCriado"].replace(
-                                    "T", " ")}
+                                {"Data/Hora": eventos["dtHrCriado"].replace("T", " ")}
                             )
                     if "dtPrevista" in obj_correio["objetos"][0]:
                         self.dtPrevista = obj_correio["objetos"][0]["dtPrevista"]
                     self._image = (
-                        BASE_URL +
-                        obj_correio["objetos"][0]["eventos"][0]["urlIcone"]
+                        BASE_URL + obj_correio["objetos"][0]["eventos"][0]["urlIcone"]
                     )
                     self.info = info
                     self.tipoPostal = (
@@ -161,8 +212,7 @@ class CorreiosSensor(SensorEntity):
                         + obj_correio["objetos"][0]["tipoPostal"]["descricao"]
                     )
         except Exception as error:
-            _LOGGER.error("%s - Não foi possível atualizar - %s",
-                          self.info, error)
+            _LOGGER.error("%s - Não foi possível atualizar - %s", self.info, error)
 
     @property
     def name(self):
@@ -187,6 +237,9 @@ class CorreiosSensor(SensorEntity):
             "Descrição": self.description,
             "Código Objeto": self.track,
             "Data Prevista": self.dtPrevista,
+            "Origem": self.origem,
+            "Destino": self.destino,
+            "Última Movimentação": self.data_movimentacao,
             "Tipo Postal": self.tipoPostal,
             "Movimentações": self.trackings,
         }
